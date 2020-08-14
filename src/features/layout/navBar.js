@@ -22,10 +22,10 @@ function NavBar() {
         <ButtonLink variantColor="teal" variant="ghost">
           Find Apartments
         </ButtonLink>
-        <Button variantColor="teal" variant="outline" size="sm">
+        <Button borderColor="#4FD1C5" color="#4FD1C5" variant="outline" size="sm">
           Join
         </Button>
-        <Button variantColor="teal" variant="solid" size="sm">
+        <Button variantColor="teal" bg="#4FD1C5" variant="solid" size="sm">
           Login
         </Button>
       </ButtonGroup>
