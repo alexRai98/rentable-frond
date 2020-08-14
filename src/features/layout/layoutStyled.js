@@ -47,7 +47,7 @@ const LinkFooter = stiled.a`
     line-height: 16px;
     color: #4A5568;
     margin-bottom: 12px;
-    cursor:pointer;
+    cursor:pointer; 
     &:hover{
         color:teal;
     }
