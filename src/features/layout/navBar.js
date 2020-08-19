@@ -1,9 +1,12 @@
 import React from "react";
-import { Box, Button, ButtonGroup } from "@chakra-ui/core";
+import { Box, Button, ButtonGroup,useDisclosure } from "@chakra-ui/core";
 import logo from "../../images/Logo.svg";
 import { ButtonLink } from "./layoutStyled";
+import Login from '../session/login'
 
 function NavBar() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <Box
       d="flex"
@@ -25,9 +28,10 @@ function NavBar() {
         <Button borderColor="#4FD1C5" color="#4FD1C5" variant="outline" size="sm">
           Join
         </Button>
-        <Button variantColor="teal" bg="#4FD1C5" variant="solid" size="sm">
+        <Button variantColor="teal" bg="#4FD1C5" variant="solid" size="sm" onClick={onOpen}>
           Login
         </Button>
+        <Login isOpen={isOpen} onClose={onClose} />
       </ButtonGroup>
     </Box>
   );
