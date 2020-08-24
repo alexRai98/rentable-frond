@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropertyCard from "./propertyCard";
 import { Grid } from "@chakra-ui/core";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchProperties } from "../../services/api";
 
 const PropertiesList = () => {
-  const properties = useSelector((state) => state.properties);
+  const properties = useSelector((state) => state.properties.items);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchProperties());
+  }, []);
 
   return (
     <>
