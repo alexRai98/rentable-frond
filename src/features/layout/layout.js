@@ -27,7 +27,7 @@ function Layout({ children }) {
     <Fragment>
       <Navbar />
       {children}
-      <form onSubmit={submitPhoto}>
+      {/* <form onSubmit={submitPhoto}>
         <input
           type="file"
           id="images-property"
@@ -35,7 +35,7 @@ function Layout({ children }) {
           accept="image/png, image/jpeg"
         />
         <input className="submit-input" type="submit" value="Upload" />
-      </form>
+      </form> */}
 
       <Footer />
     </Fragment>

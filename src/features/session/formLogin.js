@@ -2,14 +2,19 @@ import React from "react";
 import { Formik, Form, useField } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
+import {unwrapResult} from '@reduxjs/toolkit'
 import {
   FormControl,
   FormLabel,
   Input,
   FormErrorMessage,
   Button,
-  ModalFooter
+  ModalFooter,
+  Spinner,
+  useToast
 } from "@chakra-ui/core";
+import {logIn} from './sessionSlice'
+//import ToastError from '../toast/error'
 
 function FullField(props) {
   const [field, meta] = useField(props);
@@ -25,9 +30,23 @@ function FullField(props) {
 
 function LoginForm() {
   const dispatch = useDispatch();
+  const sessionStatus = useSelector((state) => state.session.status);
+  const toast = useToast();
 
-  const hundlerSubmit = (values) => {
-    console.log(values.email);
+  const hundlerSubmit = async (values) => {
+    
+    try {
+      const response = await dispatch(logIn(values))
+      unwrapResult(response)
+    } catch(e) {
+      toast({
+        title: "An error occurred.",
+        description: {e},
+        status: "error",
+        duration: 1000,
+        isClosable: true,
+      })
+    }
   };
   return (
     <>
@@ -56,9 +75,9 @@ function LoginForm() {
               variant="solid"
               size="sm"
               mr={3}
-              //onClick={onClose}
             >
               Sign in
+              {sessionStatus === "loading" && <Spinner ml="7px"/> }
             </Button>
           </ModalFooter>
         </Form>

@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import Layout from "./features/layout/layout";
 import Landing from "./features/landing/landing";
+import SignUp from './features/session/signUp/layout'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
         <Router>
           <Switch>
             <Route exact path="/" component={Landing}/>
+            <Route exact path="/sign-up" component={SignUp}/>
           </Switch>
         </Router>
       </Layout>

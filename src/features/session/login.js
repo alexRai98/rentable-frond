@@ -19,8 +19,6 @@ function Login({ isOpen, onClose }) {
         <ModalBody>
           <FormLogin />
         </ModalBody>
-
-        
       </ModalContent>
     </Modal>
   );

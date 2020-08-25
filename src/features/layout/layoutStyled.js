@@ -6,7 +6,6 @@ const ButtonLink = stiled(Button)`
     font-weight: normal;
     font-size: 16px;
     font-family: Work Sans;
-  
 `;
 
 const ContainerFooter = stiled.footer`
