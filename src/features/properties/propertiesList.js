@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import PropertyCard from "./propertyCard";
+import PropertySearch from "./propertySearch";
 import { Grid } from "@chakra-ui/core";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProperties } from "../../services/api";
@@ -14,7 +15,7 @@ const PropertiesList = () => {
 
   return (
     <>
-      <h1>Hola Mundo Cruel, TE VAS PARA NO VOLVER</h1>
+      <PropertySearch />
       <Grid
         templateColumns="repeat(3, 1fr)"
         templateRows="repeat(3, 1fr)"
