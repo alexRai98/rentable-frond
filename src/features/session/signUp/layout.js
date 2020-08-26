@@ -8,9 +8,11 @@ import {
   Route,
   useHistory,
 } from "react-router-dom";
+import SignupForm from "./formSignUp";
+import Success from './success'
 
 function SignUp() {
-  const history = useHistory();
+  let history = useHistory();
 
   return (
     <Container>
@@ -24,10 +26,12 @@ function SignUp() {
       </Box>
       <Box height="318px">
         <Router>
-          <Route exact path="/sign-up" component={Card} />
-          <Route exact path="/sign-up/homeSeeker">
-            <h1>homeSeeker</h1>
-          </Route>
+          <Switch>
+            <Route exact path="/sign-up" component={Card} />
+            <Route exact path="/sign-up/:type" component={SignupForm} />
+            <Route exact path="/sign-up/success/:type" component={Success} />
+        
+          </Switch>
         </Router>
       </Box>
     </Container>

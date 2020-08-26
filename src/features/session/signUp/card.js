@@ -1,4 +1,5 @@
 /* @jsx jsx */
+ // eslint-disable-next-line 
 import { css, jsx } from "@emotion/core";
 import React from "react";
 import { Card, CardTitle, CardText, ContainerCar } from "./signupSyled";
@@ -23,14 +24,14 @@ const CardItem = ({ logo, title, text, styled }) => {
 function CardContainer() {
   return (
     <ContainerCar>
-      <Link to="/sign-up/landlord">
+      <Link to="/sign-up/success/Landlord">
         <CardItem
           logo={logoLandlor}
           title="Landlord"
           text="You want to rent or sell a home"
         />
       </Link>
-      <Link to="/sign-up/homeSeeker">
+      <Link to="/sign-up/HomeSeeker">
         <CardItem
           logo={logoHomeSeeker}
           title="Home seeker"

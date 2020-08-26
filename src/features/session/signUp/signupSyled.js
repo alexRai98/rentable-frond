@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Box,Flex } from "@chakra-ui/core";
+import { Box, Flex } from "@chakra-ui/core";
 
 export const Container = styled(Box)`
   width: 100%;
@@ -22,7 +22,7 @@ export const ContainerCar = styled(Flex)`
   position: absolute;
   top: 244px;
   left: 413px;
-`
+`;
 
 export const Card = styled(Box)`
   display: flex;
@@ -30,11 +30,11 @@ export const Card = styled(Box)`
   background-color: #ffffff;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.06), 0px 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  align-items:center;
+  align-items: center;
   padding: 16px;
-  cursor:pointer;
-  &:hover{
-    transform: scale(1.1)
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.1);
   }
 `;
 
@@ -52,3 +52,24 @@ export const CardText = styled.p`
   line-height: 150%;
 `;
 
+export const ContainerForm = styled(Box)`
+  width: 474px;
+  padding: 40px;
+  position: absolute;
+  background: #ffffff;
+  top: 20%;
+  left: 483px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.06), 0px 4px 6px rgba(0, 0, 0, 0.1);
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+`;
+
+export const TitleForm = styled.h1`
+  font-family: Oxygen;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 150%;
+  margin-bottom: 4px;
+  text-align: center;
+`;
