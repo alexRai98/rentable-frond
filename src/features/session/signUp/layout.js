@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box } from "@chakra-ui/core";
 import { Container, Title, SubTitle } from "./signupSyled";
 import Card from "./card";
@@ -12,7 +12,7 @@ import SignupForm from "./formSignUp";
 import Success from './success'
 
 function SignUp() {
-  let history = useHistory();
+  const history = useHistory()
 
   return (
     <Container>
@@ -30,7 +30,6 @@ function SignUp() {
             <Route exact path="/sign-up" component={Card} />
             <Route exact path="/sign-up/:type" component={SignupForm} />
             <Route exact path="/sign-up/success/:type" component={Success} />
-        
           </Switch>
         </Router>
       </Box>

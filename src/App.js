@@ -4,18 +4,22 @@ import Layout from "./features/layout/layout";
 import Landing from "./features/landing/landing";
 import SignUp from './features/session/signUp/layout'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Map from './features/map/map'
 
 function App() {
   return (
+    
     <div className="App">
-      <Layout>
+      <Map/>
+      {/* <Layout>
         <Router>
           <Switch>
             <Route exact path="/" component={Landing}/>
             <Route exact path="/sign-up" component={SignUp}/>
+            <Route exact path="/map" component={Map} />
           </Switch>
         </Router>
-      </Layout>
+      </Layout> */}
     </div>
   );
 }
