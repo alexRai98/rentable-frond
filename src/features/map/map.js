@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Image, Flex, Text, AspectRatioBox } from "@chakra-ui/core";
+import { Image, AspectRatioBox } from "@chakra-ui/core";
 import ReactMapGL, { Marker } from "react-map-gl";
 import iconMarker from "../../images/marker.svg";
 

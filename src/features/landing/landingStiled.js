@@ -10,4 +10,12 @@ const DeviderSearch = stiled(Divider)`
     border-color: #A0AEC0;
 `
 
-export {TextSearch,DeviderSearch}
+const Option = stiled.option`
+    cursor: pointer;
+    width: 395px;
+    &:hover{
+        background: #2222;
+    }
+`
+
+export {TextSearch,DeviderSearch,Option}
