@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Image, AspectRatioBox } from "@chakra-ui/core";
 import ReactMapGL, { Marker } from "react-map-gl";
 import iconMarker from "../../images/marker.svg";
@@ -11,18 +11,7 @@ export default function Mapa() {
     longitude: -80.626938,
     zoom: 8,
   });
-  async function search() {
-    //https://api.mapbox.com/geocoding/v5/mapbox.places/515%washin.json?types=address&access_token=pk.eyJ1IjoiYWxleGRlbGdhZG8iLCJhIjoiY2tlZGxiMW5rMDIzajJzb3p3OGFnN2t3cCJ9.-OspwPUhiJvBmJk2lrDQ7g
-    const response = await fetch(
-      "https://api.mapbox.com/geocoding/v5/mapbox.places/515%washin.json?types=address&access_token=pk.eyJ1IjoiYWxleGRlbGdhZG8iLCJhIjoiY2tlZGxiMW5rMDIzajJzb3p3OGFnN2t3cCJ9.-OspwPUhiJvBmJk2lrDQ7g"
-    );
-    // const data =  await response.json()
-    // return data
-    return response;
-  }
-  useEffect(() => {
-    search().then((r) => console.log(r));
-  }, []);
+
 
   return (
     <AspectRatioBox ratio={16 / 9}>

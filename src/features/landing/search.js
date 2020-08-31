@@ -5,6 +5,7 @@ import { TextSearch, DeviderSearch } from "./landingStiled";
 import Input from "./inputSearch";
 
 function Search() {
+
   return (
     <Box d="flex" p={5} shadow="md" borderWidth="1px" flex="1" rounded="15px">
       <Box>
