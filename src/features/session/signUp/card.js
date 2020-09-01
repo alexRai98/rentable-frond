@@ -24,7 +24,7 @@ const CardItem = ({ logo, title, text, styled }) => {
 function CardContainer() {
   return (
     <ContainerCar>
-      <Link to="/sign-up/success/Landlord">
+      <Link to="/sign-up/Landlord">
         <CardItem
           logo={logoLandlor}
           title="Landlord"

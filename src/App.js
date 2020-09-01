@@ -5,21 +5,20 @@ import Layout from "./features/layout/layout";
 import Landing from "./features/landing/landing";
 import SignUp from "./features/session/signUp/layout";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Map from "./features/map/map";
+import PropertyDetail from "./features/propertyDetail/property";
 
 function App() {
   return (
     <div className="App">
-      {/* <Map /> */}
-      <Layout>
-        <Router>
+      <Router>
+        <Layout>
           <Switch>
-            <Route exact path="/" component={Landing}/>
-            <Route exact path="/sign-up" component={SignUp}/>
-            <Route exact path="/map" component={Map} />
+            <Route exact path="/" component={Landing} />
+            <Route exact path="/sign-up" component={SignUp} />
+            <Route exact path="/property/:id" component={PropertyDetail} />
           </Switch>
-        </Router>
-      </Layout>
+        </Layout>
+      </Router>
     </div>
   );
 }

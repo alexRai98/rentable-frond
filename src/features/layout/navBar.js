@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Button, ButtonGroup,useDisclosure } from "@chakra-ui/core";
+import {Link} from 'react-router-dom'
 import logo from "../../images/Logo.svg";
 import { ButtonLink } from "./layoutStyled";
 import Login from '../session/login'
@@ -16,8 +17,9 @@ function NavBar() {
       height="86px"
       alignItems="center"
     >
-      <img src={logo} alt={"logo"} />
-
+      <Link to="/">
+        <img src={logo} alt={"logo"} />
+      </Link>
       <ButtonGroup spacing="32px">
         <ButtonLink variantColor="teal" variant="ghost">
           Find Houses
@@ -25,14 +27,16 @@ function NavBar() {
         <ButtonLink variantColor="teal" variant="ghost">
           Find Apartments
         </ButtonLink>
-        <Button borderColor="#4FD1C5" color="#4FD1C5" variant="outline" size="sm">
-          Join
-        </Button>
+        <Link to="/sign-up" >
+          <Button borderColor="#4FD1C5" color="#4FD1C5" variant="outline" size="sm" mr="32px">
+              Join
+          </Button>
+        </Link>
         <Button variantColor="teal" bg="#4FD1C5" variant="solid" size="sm" onClick={onOpen}>
           Login
         </Button>
-        <Login isOpen={isOpen} onClose={onClose} />
       </ButtonGroup>
+      <Login isOpen={isOpen} onClose={onClose} />
     </Box>
   );
 }
