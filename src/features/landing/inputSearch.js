@@ -12,6 +12,7 @@ function InputSearch() {
     );
     const data = await response.json();
     setResults(data.features);
+    console.log(data.features)
     return data.features;
   }
   useEffect(() => {
