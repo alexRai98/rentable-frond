@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button } from "@chakra-ui/core";
+import { Box, Button,Flex } from "@chakra-ui/core";
 import SelectSearch from "./selectSearch";
 import { TextSearch, DeviderSearch } from "./landingStiled";
 import Input from "./inputSearch";
@@ -7,7 +7,7 @@ import Input from "./inputSearch";
 function Search() {
 
   return (
-    <Box d="flex" p={5} shadow="md" borderWidth="1px" flex="1" rounded="15px">
+    <Flex p={5} shadow="md" borderWidth="1px" rounded="15px" border="1px solid #D9D9D9">
       <Box>
         <TextSearch>I'm Looking For</TextSearch>
         <SelectSearch options={["An Apartment","A House"]} />
@@ -33,7 +33,7 @@ function Search() {
       >
         Search
       </Button>
-    </Box>
+    </Flex>
   );
 }
 
