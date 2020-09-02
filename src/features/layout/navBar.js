@@ -27,7 +27,7 @@ function NavBar() {
         <ButtonLink variantColor="teal" variant="ghost">
           Find Apartments
         </ButtonLink>
-        <Link to="/sign-up" >
+       <Link to="/sign-up" >
           <Button borderColor="#4FD1C5" color="#4FD1C5" variant="outline" size="sm" mr="32px">
               Join
           </Button>

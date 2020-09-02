@@ -7,8 +7,8 @@ export default function ListAmenities({ amenities }) {
     <Flex mt="18px" mb="20px">
       <List spacing={3} mr="120px">
         <TitleAmenitie>Aparment</TitleAmenitie>
-        {amenities.aparment.map((amenitie) => (
-          <ListItem fontSize="14px">
+        {amenities.aparment.map((amenitie,index) => (
+          <ListItem fontSize="14px" key={`${amenitie}${index}`}>
             <ListIcon icon="check-circle" color="teal.300" size="12px"/>
             {amenitie}
           </ListItem>
@@ -16,8 +16,8 @@ export default function ListAmenities({ amenities }) {
       </List>
       <List spacing={3} mr="120px">
         <TitleAmenitie>Building</TitleAmenitie>
-        {amenities.building.map((amenitie) => (
-          <ListItem fontSize="14px">
+        {amenities.building.map((amenitie,index) => (
+          <ListItem fontSize="14px" key={`${amenitie}${index}`}>
             <ListIcon icon="check-circle" color="teal.300" size="12px"/>
             {amenitie}
           </ListItem>
@@ -25,8 +25,8 @@ export default function ListAmenities({ amenities }) {
       </List>
       <List spacing={3}>
         <TitleAmenitie>Close</TitleAmenitie>
-        {amenities.close.map((amenitie) => (
-          <ListItem fontSize="14px">
+        {amenities.close.map((amenitie,index) => (
+          <ListItem fontSize="14px" key={`${amenitie}${index}`}>
             <ListIcon icon="check-circle" color="teal.300" size="12px"/>
             {amenitie}
           </ListItem>

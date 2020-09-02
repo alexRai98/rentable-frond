@@ -15,6 +15,7 @@ import iconBathroom from "../../images/bathroom.svg";
 import iconBedroom from "../../images/bedroom.svg";
 import ListAmenities from "./listAmenities";
 import Map from "./map";
+import Carrousel from "./carrousel";
 
 export default function Property() {
   const areasPlace = [
@@ -54,7 +55,7 @@ export default function Property() {
   return (
     <Container>
       <Box>
-        <Box background="#EDF2F7" w="100%" h="450px" mb="20px"></Box>
+        <Carrousel />
         <Flex justifyContent="space-between">
           <Title>Francisco de Paula Ugarriza 27</Title>
           <Title>S/ 1000</Title>
@@ -66,7 +67,7 @@ export default function Property() {
         <Divider borderColor="#718096" />
         <Flex justifyContent="space-between" my="22px">
           {areasPlace.map((area) => (
-            <Place>
+            <Place key={area.text}>
               <Image src={area.icon} mr="13px" />
               {area.text}
             </Place>
@@ -106,9 +107,9 @@ export default function Property() {
             Favorited
             <i
               style={{ color: "red", marginLeft: "10px" }}
-              class="fas fa-heart"
+              className="fas fa-heart"
             ></i>
-            <i style={{ marginLeft: "10px" }} class="far fa-heart"></i>
+            <i style={{ marginLeft: "10px" }} className="far fa-heart"></i>
           </LinkTo>
         </Card>
       </Box>
