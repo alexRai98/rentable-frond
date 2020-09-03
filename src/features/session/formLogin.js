@@ -14,7 +14,6 @@ import {
   useToast,
 } from "@chakra-ui/core";
 import { logIn } from "./sessionSlice";
-//import ToastError from '../toast/error'
 
 function FullField(props) {
   const [field, meta] = useField(props);
@@ -37,12 +36,19 @@ function LoginForm() {
     try {
       const response = await dispatch(logIn(values));
       unwrapResult(response);
+      toast({
+        title: "Account created.",
+        description: "Loging success",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      })
     } catch (e) {
       toast({
         title: "An error occurred.",
         description: { e },
         status: "error",
-        duration: 1000,
+        duration: 3000,
         isClosable: true,
       });
     }

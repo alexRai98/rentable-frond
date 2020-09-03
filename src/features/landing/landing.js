@@ -10,6 +10,7 @@ import {
   TitleSection,
   RectangleYellow,
 } from "./landingStiled";
+import { Link } from "react-router-dom";
 
 function Landing() {
   return (
@@ -52,20 +53,31 @@ function Landing() {
         <TitleSection>
           Getting someone to rent your apartment has never been this easy
         </TitleSection>
-        <Button
-          variant="solid"
-          variantColor="purple"
-          size="md"
-          marginTop="24px"
-        >
-          Create an account now
-        </Button>
+        <Link to="/sign-up">
+          <Button
+            variant="solid"
+            variantColor="purple"
+            size="md"
+            marginTop="24px"
+          >
+            Create an account now
+          </Button>
+        </Link>
       </Flex>
       <Flex my="100px" w="100%" maxW="1111px" justifyContent="space-between">
         <Image src={house} />
         <Flex alignSelf="center" flexDirection="column">
-          <Text fontSize="28px" fontFamily="Oxigen">Check the best priced properties in the town</Text>
-          <Button variantColor="teal" bg="#4FD1C5" variant="solid" size="md" w="258px" mt="17px">
+          <Text fontSize="28px" fontFamily="Oxigen">
+            Check the best priced properties in the town
+          </Text>
+          <Button
+            variantColor="teal"
+            bg="#4FD1C5"
+            variant="solid"
+            size="md"
+            w="258px"
+            mt="17px"
+          >
             Find a home
           </Button>
         </Flex>
