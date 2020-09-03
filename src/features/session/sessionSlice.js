@@ -11,6 +11,9 @@ export const signUp = createAsyncThunk("/user/signUp", async (body) => {
   return response;
 });
 
+
+
+
 const userSlice = createSlice({
   name: "session",
   initialState: {
@@ -18,7 +21,12 @@ const userSlice = createSlice({
     status: "idle",
     error: null,
   },
-  reducers: {},
+  reducers: {
+
+    logOut:(state)=>{
+      state.user=null;
+    }
+  },
   extraReducers: {
     [logIn.pending]: (state) => {
       state.status = "loading";
@@ -41,9 +49,10 @@ const userSlice = createSlice({
     [signUp.rejected]: (state, action) => {
       state.error = action.error.message;
       state.status = "rejected";
-    },
+    }
   },
 });
 
-export const getUser = (state) => state.user.user;
+export const {logOut} = userSlice.actions;
+export const getUser = (state) => state.session.user;
 export default userSlice.reducer;
