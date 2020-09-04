@@ -1,7 +1,10 @@
 import React from "react";
 import { Select } from "@chakra-ui/core";
 
-export default function SelectSearch({ options }) {
+export default function SelectSearch({ options, setFormSearch, formSearch }) {
+  const hundlerChange = (e)=>{
+    console.log(e)
+  }
   return (
     <Select
       fontFamily="Oxygen"
@@ -14,6 +17,7 @@ export default function SelectSearch({ options }) {
       w="135px"
       justifyContent="space-between"
       variantColor="#85909F"
+      onChange={hundlerChange}
       _focus={{ outline: "none" }}
     >
       {options.map((option) => (

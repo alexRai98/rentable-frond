@@ -9,7 +9,7 @@ export default function Mapa() {
     height: "845px",
     latitude: -5.19527,
     longitude: -80.626938,
-    zoom: 8,
+    zoom: 15,
   });
 
 

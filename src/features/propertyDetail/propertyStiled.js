@@ -57,13 +57,21 @@ export const TitleAmenitie = styled.h3`
   color: #4a5568;
   margin-bottom: 8px;
 `;
- // Carrousel
+// Carrousel
 
- export const ContainerCarrousel = styled.div`
+export const ContainerCarrousel = styled.div`
   display: grid;
-  grid-template-columns: minmax(auto,117px) minmax(auto,609px) minmax(auto,117px);
+  grid-template-columns: minmax(auto, 117px) minmax(auto, 609px) minmax(
+      auto,
+      117px
+    );
   grid-template-rows: 450px;
   margin-bottom: 20px;
-  background: #EDF2F7;
- `
+  background: #edf2f7;
+`;
 
+export const ImageProperty = styled.img`
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+`;

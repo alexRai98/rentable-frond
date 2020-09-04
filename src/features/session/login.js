@@ -17,7 +17,7 @@ function Login({ isOpen, onClose }) {
         <ModalHeader fontWeight="normal">Login</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          <FormLogin />
+          <FormLogin onClose={onClose}/>
         </ModalBody>
       </ModalContent>
     </Modal>

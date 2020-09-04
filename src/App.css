@@ -4,3 +4,6 @@
   align-items: center;
 }
 
+input[type="file"] {
+  display: none;
+}

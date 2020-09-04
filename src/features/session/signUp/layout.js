@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box } from "@chakra-ui/core";
 import { Container, Title, SubTitle } from "./signupSyled";
 import Card from "./card";
@@ -17,7 +17,7 @@ function SignUp() {
   return (
     <Container>
       <Box bg="#81E6D9" height="400px" textAlign="center" pt="80px">
-        {history.location.pathname === "/sign-up" && (
+        {history.location.pathname  && (
           <>
             <Title>Qué estas buscando?</Title>
             <SubTitle>Selecciona el perfil con el que te identificas</SubTitle>

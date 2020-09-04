@@ -12,8 +12,6 @@ export const signUp = createAsyncThunk("/user/signUp", async (body) => {
 });
 
 
-
-
 const userSlice = createSlice({
   name: "session",
   initialState: {

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Input, Box } from "@chakra-ui/core";
 import ListResults from "./listResul";
 
-function InputSearch() {
+function InputSearch({setFormSearch,formSearch}) {
   const [input, setInput] = useState("");
   const [results, setResults] = useState([]);
 
@@ -12,20 +12,25 @@ function InputSearch() {
     );
     const data = await response.json();
     setResults(data.features);
-    console.log(data.features)
     return data.features;
   }
   useEffect(() => {
     searchPlaces(input);
-    console.log(results);
   }, [input,results]);
 
   const hundlerChange = (event) => {
     setInput(event.target.value);
   };
+
+  const hundlerClick =(addrees)=>{
+    setFormSearch({
+      ...formSearch, address:addrees
+    })
+  }
   return (
     <Box>
       <Input
+        value={input}
         type="text"
         border="none"
         placeholder="Santiago de Surco"
@@ -34,7 +39,7 @@ function InputSearch() {
         pl="0px"
         onChange={hundlerChange}
       />
-      {results && <ListResults results={results} />}
+      {results && <ListResults results={results} onClick={hundlerClick} setInput={setInput}/>}
     </Box>
   );
 }

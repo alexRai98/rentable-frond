@@ -10,7 +10,7 @@ import {
   TitleSection,
 } from "./propertyStiled";
 import iconPet from "../../images/pet.svg";
-import iconArea from "../../images/area.svg";
+import iconArea from "../../images/area_purple.svg";
 import iconBathroom from "../../images/bathroom.svg";
 import iconBedroom from "../../images/bedroom.svg";
 import ListAmenities from "./listAmenities";
