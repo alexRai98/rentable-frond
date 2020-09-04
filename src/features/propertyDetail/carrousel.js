@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Box, IconButton, Flex,Image } from "@chakra-ui/core";
-import { ContainerCarrousel } from "./propertyStiled";
+import { Box, IconButton, Flex } from "@chakra-ui/core";
+import { ContainerCarrousel, ImageProperty } from "./propertyStiled";
 import image1 from '../../images/image1.jpg'
 import image2 from '../../images/image2.jpg'
 
@@ -47,7 +47,7 @@ export default function Carrousel() {
         />
       </Flex>
       <Box> 
-        <Image src={image.image} height="100%" width="100%" objectFit="cover" />
+        <ImageProperty src={image.image} />
       </Box>
       <Flex pr="16px" alignItems="center" justifyContent="flex-end">
         <IconButton
