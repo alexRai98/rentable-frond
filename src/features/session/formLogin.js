@@ -27,7 +27,7 @@ function FullField(props) {
   );
 }
 
-function LoginForm() {
+function LoginForm({ onClose }) {
   const dispatch = useDispatch();
   const sessionStatus = useSelector((state) => state.session.status);
   const toast = useToast();
@@ -36,17 +36,19 @@ function LoginForm() {
     try {
       const response = await dispatch(logIn(values));
       unwrapResult(response);
+
       toast({
-        title: "Account created.",
-        description: "Loging success",
+        title: "Loging success",
+        description: "Welcome",
         status: "success",
         duration: 3000,
         isClosable: true,
-      })
-    } catch (e) {
+      });
+      onClose();
+    } catch {
       toast({
         title: "An error occurred.",
-        description: { e },
+        description: "Email or password incorrect",
         status: "error",
         duration: 3000,
         isClosable: true,
