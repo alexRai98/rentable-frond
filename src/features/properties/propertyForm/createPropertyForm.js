@@ -11,6 +11,9 @@ import CheckboxAmenities from "./checkboxAmenities";
 import SwitchPetsAllowed from "./switchPetsAllowed";
 import InputTextArea from "./inputTextArea";
 import UploadImages from "./uploadImages";
+import { useSelector, useDispatch } from "react-redux";
+import { getUser } from "../../session/sessionSlice";
+//import { createProperty } from "../../../services/api";
 
 const CreatePropertyForm = () => {
   const [operationType, setOperationType] = useState("rent");
@@ -20,8 +23,11 @@ const CreatePropertyForm = () => {
   const [closeBy, setCloseBy] = useState([]);
   const [petsAllowed, setPetsAllowed] = useState(true);
   const [file, setFile] = useState([]);
+  const user = useSelector(getUser);
+  const dispatch = useDispatch();
 
   const handleSubmit = (values) => {
+   // dispatch(createProperty(user.token,values))
     console.log({
       ...values,
       operation_type: operationType,

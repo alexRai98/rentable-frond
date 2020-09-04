@@ -3,7 +3,6 @@ import "./App.css";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Layout from "./features/layout/layout";
 import Landing from "./features/landing/landing";
-import SignUp from "./features/session/signUp/layout";
 import PropertiesList from "./features/properties/propertiesList";
 import CreatePropertyForm from "./features/properties/propertyForm/createPropertyForm";
 import SignUp from "./features/session/signUp/layout";

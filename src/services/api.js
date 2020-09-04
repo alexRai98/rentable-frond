@@ -7,9 +7,12 @@ export const fetchProperties = createAsyncThunk(
       headers: {
         "content-type": "application/jason",
       },
+      
     });
 
     const data = response.json();
     return data;
   }
 );
+
+//export const createProperty =
