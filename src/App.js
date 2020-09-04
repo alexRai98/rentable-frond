@@ -3,9 +3,9 @@ import "./App.css";
 import Layout from "./features/layout/layout";
 import Landing from "./features/landing/landing";
 import PropertiesList from "./features/properties/propertiesList";
-import CreatePropertyForm from "./features/properties/createPropertyForm";
+import CreatePropertyForm from "./features/properties/propertyForm/createPropertyForm";
 import SignUp from "./features/session/signUp/layout";
-import { UploadImages } from "./features/properties/uploadImages";
+// import { UploadImages } from "./features/properties/uploadImages";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
               path="/properties/create"
               component={CreatePropertyForm}
             />
-            <Route exact path="/upload" component={UploadImages} />
+            {/* <Route exact path="/upload" component={UploadImages} /> */}
           </Switch>
         </Router>
       </Layout>

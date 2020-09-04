@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Stack, Image, Box } from "@chakra-ui/core";
 import styled from "@emotion/styled";
-import { ReactComponent as PlusIcon } from "../../images/plus.svg";
-import { ReactComponent as DeleteIcon } from "../../images/deletePhoto.svg";
+import { ReactComponent as PlusIcon } from "../../../images/plus.svg";
+import { ReactComponent as DeleteIcon } from "../../../images/deletePhoto.svg";
 
 const Label = styled.label`
   width: 135px;
@@ -14,12 +14,12 @@ const Label = styled.label`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  margin-bottom: 8px;
   cursor: pointer;
 `;
 
-export const UploadImages = () => {
-  const [file, setFile] = useState([]);
+const UploadImages = ({ file, setFile }) => {
+  //const [file, setFile] = useState([]);
 
   let fileObj = [];
   let fileArray = [];
@@ -32,10 +32,10 @@ export const UploadImages = () => {
     setFile([...file, ...fileArray]);
   };
 
-  const uploadFiles = (e) => {
-    e.preventDefault();
-    console.log(file);
-  };
+  // const uploadFiles = (e) => {
+  //   e.preventDefault();
+  //   console.log(file);
+  // };
 
   const handleDeletePhoto = (index) => {
     console.log(index);
@@ -44,7 +44,7 @@ export const UploadImages = () => {
   };
 
   return (
-    <form>
+    <Box mb="30px">
       <Label>
         <input
           type="file"
@@ -56,7 +56,7 @@ export const UploadImages = () => {
         <PlusIcon />
       </Label>
 
-      <Stack isInline spacing={4}>
+      <Stack isInline spacing={2} d="flex" flexWrap="wrap">
         {(file || []).map((url, index) => (
           <Box key={index} style={{ position: "relative" }}>
             <Image src={url} w="300px" h="200px" />
@@ -72,10 +72,11 @@ export const UploadImages = () => {
           </Box>
         ))}
       </Stack>
-
-      <button type="button" onClick={uploadFiles}>
+      {/* <button type="button" onClick={uploadFiles}>
         Upload
-      </button>
-    </form>
+      </button> */}
+    </Box>
   );
 };
+
+export default UploadImages;
