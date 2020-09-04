@@ -15,6 +15,7 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import sessionReducer from '../features/session/sessionSlice'
+import propertiesReducer from '../features/properties/propertiesSlice'
 
 const persistConfig = {
   key: "root",
@@ -24,6 +25,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   session: sessionReducer,
+  properties: propertiesReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
