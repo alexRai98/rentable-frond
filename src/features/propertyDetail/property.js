@@ -96,6 +96,7 @@ export default function Property() {
           {property.addres}, Peru
         </Text>
         <Map longitud={-80.63185} latitud={-5.181476} />
+        {/* <Map longitud={-80.626938} latitud={-5.195270} /> */}
       </Box>
       <Box>
         <Card>

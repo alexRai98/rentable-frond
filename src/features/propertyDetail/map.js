@@ -13,7 +13,7 @@ export default function Mapa({latitud,longitud}) {
   });
   return (
       <ReactMapGL
-        mapboxApiAccessToken="pk.eyJ1IjoiYWxleGRlbGdhZG8iLCJhIjoiY2tlZG1xYTJwMHUxNjM2bzF6Nm9yYnpyMSJ9.QF8MQeqSlDjk0pZGPleCrg"
+        mapboxApiAccessToken="pk.eyJ1IjoiYWxleGRlbGdhZG8iLCJhIjoiY2tlcTR3bTl6MHk5bjJybGczdWpnMzFtcCJ9.BVOkfbZIxkkBaRzBXZmMzQ"
         mapStyle="mapbox://styles/alexdelgado/ckedr8xwo078i19n0tp4gvqn9"
         {...viewport}
         onViewportChange={(nextViewport) => setViewport(nextViewport)}
