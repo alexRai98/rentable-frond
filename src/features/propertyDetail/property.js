@@ -1,5 +1,13 @@
-import React from "react";
-import { Box, Button, Flex, Divider, Image, Text } from "@chakra-ui/core";
+import React, { useState } from "react";
+import {
+  Box,
+  Button,
+  Flex,
+  Divider,
+  Image,
+  Text,
+  useDisclosure,
+} from "@chakra-ui/core";
 import {
   Container,
   Card,
@@ -16,8 +24,13 @@ import iconBedroom from "../../images/bedroom.svg";
 import ListAmenities from "./listAmenities";
 import Map from "./map";
 import Carrousel from "./carrousel";
+import { useSelector } from "react-redux";
+import { getUser } from "../session/sessionSlice";
+import Login from "../session/login";
 
 export default function Property() {
+  const [showDetail, setShowDetail] = useState("init");
+
   const areasPlace = [
     {
       icon: iconBedroom,
@@ -36,6 +49,7 @@ export default function Property() {
       text: "Pets Allowed",
     },
   ];
+
   const amenities = {
     aparment: [
       "Washing machine",
@@ -52,6 +66,22 @@ export default function Property() {
     ],
     close: ["Supermarket", "University", "Ramen Restaurant", "Washing machine"],
   };
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const user = useSelector(getUser);
+  if (user.type === "Landlor") {
+    setShowDetail("edit");
+  }
+
+  const hubdlerShowContact = () => {
+    if (user.type === "HomeSeeker") {
+      setShowDetail("detail");
+    } else {
+      setShowDetail("login");
+    }
+  };
+
   return (
     <Container>
       <Box>
@@ -94,24 +124,73 @@ export default function Property() {
       </Box>
       <Box>
         <Card>
-          <Button
-            variantColor="teal"
-            bg="#4FD1C5"
-            variant="solid"
-            size="lg"
-            mb="12px"
-          >
-            Contact advertiser
-          </Button>
-          <LinkTo to="/">
-            Favorited
-            <i
-              style={{ color: "red", marginLeft: "10px" }}
-              className="fas fa-heart"
-            ></i>
-            <i style={{ marginLeft: "10px" }} className="far fa-heart"></i>
-          </LinkTo>
+          {showDetail === "init" && (
+            <>
+              <Button
+                variantColor="teal"
+                bg="#4FD1C5"
+                variant="solid"
+                size="lg"
+                mb="12px"
+                onClick={hubdlerShowContact}
+              >
+                Contact advertiser
+              </Button>
+              <LinkTo to="/">
+                Favorited
+                <i
+                  style={{ color: "red", marginLeft: "10px" }}
+                  className="fas fa-heart"
+                ></i>
+                <i style={{ marginLeft: "10px" }} className="far fa-heart"></i>
+              </LinkTo>
+            </>
+          )}
+
+          {showDetail ===
+            "edit"(
+              <>
+                <Button
+                  variantColor="teal"
+                  bg="#4FD1C5"
+                  variant="solid"
+                  size="lg"
+                  mb="12px"
+                >
+                  Edit Property
+                </Button>
+              </>
+            )}
+          {showDetail === "login" && (
+            <>
+              <Text>Log in or Join to contact the advertiser</Text>
+              <Button
+                variantColor="teal"
+                bg="#4FD1C5"
+                variant="solid"
+                size="sm"
+                onClick={onOpen}
+              >
+                Login
+              </Button>
+            </>
+          )}
+          {showDetail === "detail" && (
+            <>
+              <h3>Contact information</h3>
+              <label>
+                {" "}
+                <strong>Email:</strong> bonnie@codeable.pe
+              </label>
+              <label>
+                {" "}
+                <strong>Phone number: </strong> 999 444 333
+              </label>
+            </>
+          )}
         </Card>
+
+        <Login isOpen={isOpen} onClose={onClose} />
       </Box>
     </Container>
   );
