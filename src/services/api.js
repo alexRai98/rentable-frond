@@ -1,9 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+const API_ROOT = "https://rentable-api.herokuapp.com/";
+
 
 export const fetchProperties = createAsyncThunk(
   "properties/fetchProperties",
   async () => {
-    const response = await fetch("http://localhost:3000/properties", {
+    const response = await fetch(`${API_ROOT}properties`, {
       headers: {
         "content-type": "application/json",
       },
@@ -17,7 +19,7 @@ export const fetchProperties = createAsyncThunk(
 export const createProperty = createAsyncThunk(
   "properties/createProperty",
   async ({ token, body }) => {
-    const response = await fetch("http://localhost:3000/properties", {
+    const response = await fetch(`${API_ROOT}properties`, {
       method: "POST",
       body: JSON.stringify(body),
       headers: {

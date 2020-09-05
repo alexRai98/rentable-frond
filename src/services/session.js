@@ -1,5 +1,5 @@
-//const API_ROOT = "https://rentable-api.herokuapp.com/";
-const API_ROOT = "http://localhost:3000/";
+const API_ROOT = "https://rentable-api.herokuapp.com/";
+//const API_ROOT = "http://localhost:3000/";
 
 export async function session(endpoint, method, body, token) {
   const response = await fetch(`${API_ROOT}${endpoint}`, {

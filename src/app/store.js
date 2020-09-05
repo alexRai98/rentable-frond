@@ -20,7 +20,7 @@ import propertiesReducer from '../features/properties/propertiesSlice'
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["session"],
+  whitelist: ["session","properties"],
 };
 
 const rootReducer = combineReducers({

@@ -10,12 +10,11 @@ const propertiesSlice = createSlice({
   extraReducers: {
     [fetchProperties.fulfilled]: (state, action) => {
       state.items = action.payload;
-      //console.log(action.payload);
     },
     [createProperty.fulfilled]: (state, action) => {
-      console.log(action.payload);
+      state.items.push(action.payload)
     },
   },
 });
-
+export const getProperties = (state)=> state.properties.items
 export default propertiesSlice.reducer;

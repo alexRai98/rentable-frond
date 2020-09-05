@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Box,
   Button,
@@ -6,12 +6,12 @@ import {
   Divider,
   Image,
   Text,
-  useDisclosure,
+  //useDisclosure,
 } from "@chakra-ui/core";
 import {
   Container,
   Card,
-  LinkTo,
+  // LinkTo,
   Title,
   SubTitle,
   Place,
@@ -25,74 +25,53 @@ import ListAmenities from "./listAmenities";
 import Map from "./map";
 import Carrousel from "./carrousel";
 import { useSelector } from "react-redux";
-import { getUser } from "../session/sessionSlice";
-import Login from "../session/login";
+import { getProperties } from "../properties/propertiesSlice";
+import { useParams } from "react-router-dom";
+//import { getUser } from "../session/sessionSlice";
+//import Login from "../session/login";
 
 export default function Property() {
-  const [showDetail, setShowDetail] = useState("init");
-
+  // const [showDetail, setShowDetail] = useState(false);
+ 
+  const { id } = useParams();
+  const property = useSelector(getProperties).find(
+    (prop) => prop.id === Number(id)
+  );
+  console.log(property)
   const areasPlace = [
     {
       icon: iconBedroom,
-      text: "2 Bedrooms",
+      text: `${property.bedrooms} Bedrooms`,
     },
     {
       icon: iconBathroom,
-      text: "2 Bathrooms",
+      text: `${property.bathrooms} Bathrooms`,
     },
     {
       icon: iconArea,
-      text: "60 m2",
+      text: `${property.area} m2`,
     },
     {
       icon: iconPet,
-      text: "Pets Allowed",
+      text: `${property.pets_allowed? "Pets Allowed":"Pets Not Allowed"} `,
     },
   ];
-
   const amenities = {
-    aparment: [
-      "Washing machine",
-      "Washing machine",
-      "Washing machine",
-      "Washing machine",
-    ],
-    building: [
-      "Barbecue",
-      "Child pool",
-      "Access Control",
-      "Access Control",
-      "Access Control",
-    ],
-    close: ["Supermarket", "University", "Ramen Restaurant", "Washing machine"],
+    aparment: property.apartment_amenities,
+    building: property.building_amenities,
+    close: property.close_by,
   };
-
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
-  const user = useSelector(getUser);
-  if (user.type === "Landlor") {
-    setShowDetail("edit");
-  }
-
-  const hubdlerShowContact = () => {
-    if (user.type === "HomeSeeker") {
-      setShowDetail("detail");
-    } else {
-      setShowDetail("login");
-    }
-  };
-
   return (
     <Container>
       <Box>
         <Carrousel />
         <Flex justifyContent="space-between">
-          <Title>Francisco de Paula Ugarriza 27</Title>
-          <Title>S/ 1000</Title>
+          <Title>{property.addres}</Title>
+          <Title>S/ {property.monthly_rent}</Title>
         </Flex>
         <Flex justifyContent="space-between" mt="4px" mb="20px">
-          <SubTitle>Miraflores, Lima</SubTitle>
-          <SubTitle>+ S/ 100</SubTitle>
+          <SubTitle>Angamos, Piura</SubTitle>
+          <SubTitle>+ S/ {property.maintenance}</SubTitle>
         </Flex>
         <Divider borderColor="#718096" />
         <Flex justifyContent="space-between" my="22px">
@@ -106,11 +85,7 @@ export default function Property() {
         <Divider borderColor="#718096" />
         <TitleSection>About this place</TitleSection>
         <Text style={{ lineHeight: "50px" }}>
-          3 Bedroom/2 Bathroom apartment available for ASAP move-in!
-          <br /> Apartment features hardwood floors throughout, virtual doorman,
-          Central AC/heat, dishwasher and a microwave. <br /> The kitchen has
-          custom cabinetry and the living room is big enough to fit a dinner
-          table, a couch and a tv set up.
+          {property.description}
         </Text>
         <Divider borderColor="#718096" />
         <TitleSection>Amenities</TitleSection>
@@ -118,13 +93,51 @@ export default function Property() {
         <Divider borderColor="#718096" />
         <TitleSection>Location</TitleSection>
         <Text color="#718096" my="8px" fontWeight="bold" fontSize="14px">
-          Francisco de Paula Ugarriza 27, Miraflores, Lima
+          {property.addres}, Peru
         </Text>
-        <Map />
+        <Map longitud={-80.63185} latitud={-5.181476} />
       </Box>
       <Box>
         <Card>
-          {showDetail === "init" && (
+          <Button
+            variantColor="teal"
+            bg="#4FD1C5"
+            variant="solid"
+            size="lg"
+            mb="12px"
+          >
+            Edit Property
+          </Button>
+        </Card>
+      </Box>
+    </Container>
+  );
+}
+
+// const { isOpen, onOpen, onClose } = useDisclosure();
+
+//const user = useSelector(getUser);
+
+// const hubdlerShowContact = () => {
+//   if (user) {
+//     setShowDetail(true);
+//   }
+// };
+
+/* <Card>
+          {user.type === "Landlord" ? (
+            <>
+              <Button
+                variantColor="teal"
+                bg="#4FD1C5"
+                variant="solid"
+                size="lg"
+                mb="12px"
+              >
+                Edit Property
+              </Button>
+            </>
+          ) : (
             <>
               <Button
                 variantColor="teal"
@@ -139,43 +152,14 @@ export default function Property() {
               <LinkTo to="/">
                 Favorited
                 <i
-                  style={{ color: "red", marginLeft: "10px" }}
-                  className="fas fa-heart"
-                ></i>
+                    style={{ color: "red", marginLeft: "10px" }}
+                    className="fas fa-heart"
+                  ></i>
                 <i style={{ marginLeft: "10px" }} className="far fa-heart"></i>
               </LinkTo>
             </>
           )}
-
-          {showDetail ===
-            "edit"(
-              <>
-                <Button
-                  variantColor="teal"
-                  bg="#4FD1C5"
-                  variant="solid"
-                  size="lg"
-                  mb="12px"
-                >
-                  Edit Property
-                </Button>
-              </>
-            )}
-          {showDetail === "login" && (
-            <>
-              <Text>Log in or Join to contact the advertiser</Text>
-              <Button
-                variantColor="teal"
-                bg="#4FD1C5"
-                variant="solid"
-                size="sm"
-                onClick={onOpen}
-              >
-                Login
-              </Button>
-            </>
-          )}
-          {showDetail === "detail" && (
+          {showDetail ? (
             <>
               <h3>Contact information</h3>
               <label>
@@ -187,11 +171,22 @@ export default function Property() {
                 <strong>Phone number: </strong> 999 444 333
               </label>
             </>
+          ) : (
+            user.type === "HomeSeeker" && (
+              <>
+                <Text>Log in or Join to contact the advertiser</Text>
+                <Button
+                  variantColor="teal"
+                  bg="#4FD1C5"
+                  variant="solid"
+                  size="sm"
+                  onClick={onOpen}
+                >
+                  Login
+                </Button>
+              </>
+            )
           )}
-        </Card>
-
+        </Card> 
         <Login isOpen={isOpen} onClose={onClose} />
-      </Box>
-    </Container>
-  );
-}
+        */

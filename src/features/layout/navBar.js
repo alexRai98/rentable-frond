@@ -49,23 +49,27 @@ function NavBar() {
               </Button>
             ) : (
               <>
-                <Button
-                  borderColor="#4FD1C5"
-                  color="#4FD1C5"
-                  variant="outline"
-                  size="sm"
-                  mr="32px"
-                >
-                  My Properties
-                </Button>
-                <Button
-                  variantColor="teal"
-                  bg="#4FD1C5"
-                  variant="solid"
-                  size="sm"
-                >
-                  Create property
-                </Button>
+                <Link to="/properties">
+                  <Button
+                    borderColor="#4FD1C5"
+                    color="#4FD1C5"
+                    variant="outline"
+                    size="sm"
+                    mr="32px"
+                  >
+                    My Properties
+                  </Button>
+                </Link>
+                <Link to="/properties/create">
+                  <Button
+                    variantColor="teal"
+                    bg="#4FD1C5"
+                    variant="solid"
+                    size="sm"
+                  >
+                    Create property
+                  </Button>
+                </Link>
               </>
             )}
           </>

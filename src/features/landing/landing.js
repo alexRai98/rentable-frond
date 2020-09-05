@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Search from "./search";
-import { Image, Box, Text, Button, Flex } from "@chakra-ui/core";
+import { Image, Text, Button, Flex } from "@chakra-ui/core";
 import illustration from "../../images/Illustration.svg";
 import house from "../../images/house.svg";
 import {
@@ -11,8 +11,27 @@ import {
   RectangleYellow,
 } from "./landingStiled";
 import { Link } from "react-router-dom";
+import PropertyCard from "../properties/propertyCard";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchProperties } from "../../services/api";
+import depa from "../../images/depa.jpg";
+import lastDepa from "../../images/depa1.jpg";
 
 function Landing() {
+  const images = [
+    "https://media-cdn.tripadvisor.com/media/photo-s/02/4c/63/01/hall-main-entrance.jpg",
+    depa,
+    "https://s3.amazonaws.com/assets.moveglobally.com/property_images/880958/13270622/EB-CJ0958.jpg?1542503411",
+    lastDepa,
+  ];
+  const properties = useSelector((state) => state.properties.items);
+  const newProperties = properties.slice(0,3);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchProperties());
+  }, [dispatch]);
+
   return (
     <>
       <Hero>
@@ -42,7 +61,25 @@ function Landing() {
         </Text>
         <RectangleYellow />
         <TitleSection>Homes for rent at the best prices</TitleSection>
-        <Box height="384px" bg="#B2F5EA" marginTop="80px" w="100%"></Box>
+      </Flex>
+      <Flex
+        height="384px"
+        marginTop="80px"
+        w="1200px"
+        justifyContent="space-between"
+      >
+        {newProperties.map((property,index) => (
+          <Link to={`/property/${property.id}`}  key={property.id}>
+            <PropertyCard
+              price={property.monthly_rent}
+              addres={property.addres}
+              bed={property.bedrooms}
+              bath={property.bathrooms}
+              area={property.area}
+              image={images[index]}
+            />
+          </Link>
+        ))}
       </Flex>
       <Flex
         p="100px 216px"

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Box } from "@chakra-ui/core";
 import { Container, Title, SubTitle } from "./signupSyled";
 import Card from "./card";

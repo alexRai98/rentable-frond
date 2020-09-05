@@ -3,16 +3,14 @@ import { Image } from "@chakra-ui/core";
 import ReactMapGL, { Marker } from "react-map-gl";
 import iconMarker from "../../images/marker.svg";
 
-export default function Mapa() {
+export default function Mapa({latitud,longitud}) {
   const [viewport, setViewport] = useState({
     width: "100%",
     height: "845px",
-    latitude: -5.19527,
-    longitude: -80.626938,
-    zoom: 15,
+    latitude: latitud,
+    longitude: longitud,
+    zoom: 17,
   });
-
-
   return (
       <ReactMapGL
         mapboxApiAccessToken="pk.eyJ1IjoiYWxleGRlbGdhZG8iLCJhIjoiY2tlZG1xYTJwMHUxNjM2bzF6Nm9yYnpyMSJ9.QF8MQeqSlDjk0pZGPleCrg"
@@ -21,8 +19,8 @@ export default function Mapa() {
         onViewportChange={(nextViewport) => setViewport(nextViewport)}
       >
         <Marker
-          longitude={-80.626938}
-          latitude={-5.19527}
+          longitude={longitud}
+          latitude={latitud}
           offsetLeft={-20}
           offsetTop={-10}
         >
@@ -31,3 +29,5 @@ export default function Mapa() {
       </ReactMapGL>
   );
 }
+
+
