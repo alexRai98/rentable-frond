@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchProperties } from "../../services/api";
+import { fetchProperties, createProperty } from "../../services/api";
 
 const propertiesSlice = createSlice({
   name: "properties",
@@ -10,6 +10,9 @@ const propertiesSlice = createSlice({
   extraReducers: {
     [fetchProperties.fulfilled]: (state, action) => {
       state.items = action.payload;
+      //console.log(action.payload);
+    },
+    [createProperty.fulfilled]: (state, action) => {
       console.log(action.payload);
     },
   },

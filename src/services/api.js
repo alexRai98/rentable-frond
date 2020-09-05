@@ -5,9 +5,8 @@ export const fetchProperties = createAsyncThunk(
   async () => {
     const response = await fetch("http://localhost:3000/properties", {
       headers: {
-        "content-type": "application/jason",
+        "content-type": "application/json",
       },
-      
     });
 
     const data = response.json();
@@ -15,4 +14,24 @@ export const fetchProperties = createAsyncThunk(
   }
 );
 
-//export const createProperty =
+export const createProperty = createAsyncThunk(
+  "properties/createProperty",
+  async ({ token, body }) => {
+    const response = await fetch("http://localhost:3000/properties", {
+      method: "POST",
+      body: JSON.stringify(body),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await response.json();
+    console.log(response);
+
+    if (response.ok) {
+      return data;
+    } else {
+      throw new Error(data.errors.message);
+    }
+  }
+);

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Formik, Form } from "formik";
+import { useHistory } from "react-router-dom";
 import * as Yup from "yup";
 import { Text, Box, Button } from "@chakra-ui/core";
 import OperationType from "./operationType";
@@ -13,7 +14,7 @@ import InputTextArea from "./inputTextArea";
 import UploadImages from "./uploadImages";
 import { useSelector, useDispatch } from "react-redux";
 import { getUser } from "../../session/sessionSlice";
-//import { createProperty } from "../../../services/api";
+import { createProperty } from "../../../services/api";
 
 const CreatePropertyForm = () => {
   const [operationType, setOperationType] = useState("rent");
@@ -25,10 +26,10 @@ const CreatePropertyForm = () => {
   const [file, setFile] = useState([]);
   const user = useSelector(getUser);
   const dispatch = useDispatch();
+  let history = useHistory();
 
   const handleSubmit = (values) => {
-   // dispatch(createProperty(user.token,values))
-    console.log({
+    let data = {
       ...values,
       operation_type: operationType,
       property_type: propertyType,
@@ -37,7 +38,11 @@ const CreatePropertyForm = () => {
       close_by: closeBy,
       pets_allowed: petsAllowed,
       images: file,
-    });
+    };
+    console.log(data);
+    // console.log(user.token);
+    dispatch(createProperty({ token: user.token, body: data }));
+    history.replace("/properties");
   };
 
   return (
@@ -57,7 +62,6 @@ const CreatePropertyForm = () => {
           bedrooms: "",
           bathrooms: "",
           area: "",
-          pets_allowed: "",
           description: "",
         }}
         validationSchema={Yup.object({
